@@ -1,4 +1,4 @@
-import { Client, Databases, ID, Query } from "appwrite";
+import { Client, Databases, ID, Query, Storage } from "appwrite";
 import conf from "../conf/conf";
 
 export class Service {
@@ -115,9 +115,11 @@ export class Service {
       return false;
     }
   }
+
+  getFilePreview(fileId) {
+    return this.bucket.getFilePreview(conf.appwriteBucketID, fileId).href;
+  }
 }
 
-// const client = new Client();
-// const database = new Databases();
-
-// client.setEndpoint().setProject();
+const service = new Service();
+export default service;
