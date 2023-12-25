@@ -45,18 +45,73 @@ export class Service {
       return await this.database.createDocument(
         conf.appwriteDatabaseID,
         conf.appwriteCollectionID,
-        ID.unique(),
+        slug,
         {
           title,
           featuredImage,
           status,
           userId,
-          slug,
+
           content,
         }
       );
     } catch (error) {
       console.log("Appwrite service error in createPost()", error);
+      return false;
+    }
+  }
+
+  async updatePost(slug, { title, content, featuredImage, status }) {
+    try {
+      return await this.database.updateDocument(
+        conf.appwriteDatabaseID,
+        conf.appwriteCollectionID,
+        slug,
+        {
+          title,
+          content,
+          featuredImage,
+          status,
+        }
+      );
+    } catch (error) {
+      console.log("Appwrite service error in updatePost()", error);
+      return false;
+    }
+  }
+
+  async deletePost(slug) {
+    try {
+      await this.database.deleteDocument(
+        conf.appwriteDatabaseID,
+        conf.appwriteCollectionID,
+        slug
+      );
+      return true;
+    } catch (error) {
+      console.log("Appwrite service error in deletePost()", error);
+      return false;
+    }
+  }
+
+  async uploadFile(file) {
+    try {
+      return await this.bucket.createFile(
+        conf.appwriteBucketID,
+        ID.unique(),
+        file
+      );
+    } catch (error) {
+      console.log("Appwrite service error in uploadFile()", error);
+      return false;
+    }
+  }
+
+  async deleteFile(fileId) {
+    try {
+      return await this.bucket.deleteFile(conf.appwriteBucketID, fileId);
+    } catch (error) {
+      console.log("Appwrite service error in deleteFile()", error);
       return false;
     }
   }
