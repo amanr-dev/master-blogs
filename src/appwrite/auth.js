@@ -1,6 +1,8 @@
 import conf from "../conf/conf";
 import { Client, Account, ID } from "appwrite";
 
+
+// Reuseable class code
 export class AuthService {
   client = new Client();
   account;
@@ -37,6 +39,7 @@ export class AuthService {
       throw error;
     }
   }
+  
   async gotCurrentUser() {
     try {
       return await this.account.get();
@@ -45,6 +48,7 @@ export class AuthService {
     }
     return null;
   }
+
   async logout() {
     try {
       await this.account.deleteSessions();
