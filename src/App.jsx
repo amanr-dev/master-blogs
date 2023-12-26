@@ -1,12 +1,15 @@
+import { Outlet } from "react-router-dom";
 import "./App.css";
-import authService from "./appwrite/auth";
+// import authService from "./appwrite/auth";
 
-console.log(authService);
+// console.log(authService);
 function App() {
   return (
-    <>
-      <h1 className="text-4xl text-orange-400">Hello Bloggers</h1>
-    </>
+    <div>
+      <main>
+        <Outlet />
+      </main>
+    </div>
   );
 }
 
