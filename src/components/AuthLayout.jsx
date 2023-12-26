@@ -1,7 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { Comment } from "react-loader-spinner";
 
 const Protected = ({ children, authentication = true }) => {
-  return <div>{children}</div>;
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
+  const authStatus = useSelector((state) => state.auth.status);
+
+  useEffect(() => {
+    if (authentication && authStatus !== authentication) {
+      navigate("/login");
+    } else if (!authentication && authStatus !== authentication) {
+      navigate("/");
+    }
+    setLoading(false);
+  }, [authStatus, authentication, navigate]);
+
+  return loading ? <Comment /> : <>{children}</>;
 };
 
 export default Protected;
