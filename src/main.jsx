@@ -4,14 +4,28 @@ import App from "./App.jsx";
 import "./index.css";
 import { Provider } from "react-redux";
 import store from "./store/store.js";
-import { Router } from "react-router-dom";
+import { Router, RouterProvider, createBrowserRouter } from "react-router-dom";
+import { Home,  } from "./pages/export.js";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+    ],
+  },
+]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Router>
+    <RouterProvider router={router}>
       <Provider store={store}>
         <App />
       </Provider>
-    </Router>
+    </RouterProvider>
   </React.StrictMode>
 );
