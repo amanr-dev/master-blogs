@@ -5,7 +5,7 @@ import "./index.css";
 import { Provider } from "react-redux";
 import store from "./store/store.js";
 import { Router, RouterProvider, createBrowserRouter } from "react-router-dom";
-import { Home,  } from "./pages/export.js";
+import { Home } from "./pages/export.js";
 
 const router = createBrowserRouter([
   {
