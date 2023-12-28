@@ -1,7 +1,6 @@
 import conf from "../conf/conf";
 import { Client, Account, ID } from "appwrite";
 
-
 // Reuseable class code
 export class AuthService {
   client = new Client();
@@ -39,7 +38,7 @@ export class AuthService {
       throw error;
     }
   }
-  
+
   async gotCurrentUser() {
     try {
       return await this.account.get();
@@ -61,7 +60,3 @@ export class AuthService {
 const authService = new AuthService();
 
 export default authService;
-
-// const client = new Client().setEndpoint().setProject();
-
-// const account = new Account(client);
