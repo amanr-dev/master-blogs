@@ -22,7 +22,38 @@ const PostForm = ({ post }) => {
   const navigate = useNavigate();
   const userData = useSelector((state) => state.auth.userData);
 
-  const submit = async (data) => {};
+  const submit = async (data) => {
+    if (post) {
+      const file = data.image[0]
+        ? await service.uploadFile(data.image[0])
+        : null;
+
+      if (file) {
+        service.deleteFile(post.featuredImage);
+      }
+      const dbPost = await service.updatePost(post.id, {
+        ...data,
+        featuredImage: file ? file.id : undefined,
+      });
+      if (dbPost) {
+        navigate(`/post/${dbPost.id}`);
+      }
+    } else {
+      const file = await service.uploadFile(data.image[0]);
+      if (file) {
+        const fileId = file.id;
+        data.featuredImage = fileId;
+        const dbPost = await service.createPost({
+          ...data,
+          userId: userData.id,
+        });
+
+        if (dbPost) {
+          navigate(`/post/${dbPost.id}`);
+        }
+      }
+    }
+  };
 
   const slugTransform = useCallback((value) => {
     if (value && typeof value === "string")
@@ -76,6 +107,29 @@ const PostForm = ({ post }) => {
           accept="image/png, image/jpg, image/jpeg"
           {...register("image", { required: true })}
         />
+        {post && (
+          <div className="w-full mb-4 ">
+            <img
+              src={service.getFilePreview(post.featuredImage)}
+              alt={post.title}
+              className="rounded-lg"
+            />
+          </div>
+        )}
+        <Select
+          options={["active", "inactive"]}
+          label="Status"
+          className="mb-4"
+          {...register("status", { required: true })}
+        />
+        <Button
+          type="submit"
+          bgColor={post ? "bg-blue-500" : "bg-gray-500"}
+          textColor="text-white"
+          className="w-full rounded-lg"
+        >
+          {post ? "Update" : "Submit"}
+        </Button>
       </div>
     </form>
   );
