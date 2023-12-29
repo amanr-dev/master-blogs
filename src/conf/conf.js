@@ -6,4 +6,5 @@ const conf = {
   appwriteBucketID: String(process.env.REACT_APP_APPWRITE_BUCKET_ID),
 };
 
+console.log(process.env.REACT_APP_APPWRITE_URL);
 export default conf;

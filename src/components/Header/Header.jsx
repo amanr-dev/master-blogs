@@ -1,5 +1,5 @@
 import React from "react";
-import { Logo } from "../Logo";
+import Logo from "../Logo";
 import { Link, useNavigate } from "react-router-dom";
 import Container from "../container/Container";
 import LogoutBtn from "./LogoutBtn";

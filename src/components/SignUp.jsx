@@ -1,5 +1,5 @@
 import React from "react";
-import { authService } from "../appwrite/auth";
+import authService from "../appwrite/auth";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "./Button";
 import Input from "./Input";
