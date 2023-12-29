@@ -7,6 +7,7 @@ import authService from "./appwrite/auth";
 import Header from "./components/Header/Header";
 import Footer from "./components/footer/Footer";
 import { login, logout } from "./store/authSlices";
+import Container from "./components/container/Container";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -27,8 +28,8 @@ function App() {
     return (
       <div className="w-full py-8">
         <Container>
-          <div className="flex flex-wrap">
-            <Audio color="blue" width={500} />;
+          <div className="flex flex-wrap items-center justify-center ">
+            <Audio className="mx-auto" color="blue" width={500} />;
           </div>
         </Container>
       </div>

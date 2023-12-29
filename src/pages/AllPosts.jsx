@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import service from "../appwrite/config";
 import PostCard from "../components/PostCard";
 import Container from "../components/container/Container";
+import { Link } from "react-router-dom";
+import Button from "../components/Button";
 
 const AllPosts = () => {
   const [posts, setPosts] = useState(null);
