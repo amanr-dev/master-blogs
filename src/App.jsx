@@ -24,7 +24,15 @@ function App() {
   }, [dispatch]);
 
   if (loading) {
-    return <Audio color="blue" width={500} />;
+    return (
+      <div className="w-full py-8">
+        <Container>
+          <div className="flex flex-wrap">
+            <Audio color="blue" width={500} />;
+          </div>
+        </Container>
+      </div>
+    );
   }
 
   return (
