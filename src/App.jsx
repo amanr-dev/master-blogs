@@ -26,17 +26,17 @@ function App() {
 
   console.log(loading);
 
-  // if (loading) {
-  //   return (
-  //     <div className="w-full py-8">
-  //       <Container>
-  //         <div className="flex flex-wrap items-center justify-center ">
-  //           <Audio className="mx-auto" color="blue" width={500} />;
-  //         </div>
-  //       </Container>
-  //     </div>
-  //   );
-  // }
+  if (loading) {
+    return (
+      <div className="w-full py-8">
+        <Container>
+          <div className="flex flex-wrap items-center justify-center ">
+            <Audio className="mx-auto" color="blue" width={500} />;
+          </div>
+        </Container>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen flex flex-wrap content-between bg-gray-400 ">
