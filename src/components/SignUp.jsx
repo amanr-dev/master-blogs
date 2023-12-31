@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import authService from "../appwrite/auth";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "./Button";
@@ -35,8 +35,8 @@ const SignUp = () => {
       <div
         className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-slate-700 `}
       >
-        <div className="mb-2 felx justify-center">
-          <span className="inline-block w-full max-w-[100ox]">
+        <div className="mb-2 flex justify-center">
+          <span className="inline-block w-full max-w-[100px]">
             <Logo width="100%" />
           </span>
         </div>
