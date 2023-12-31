@@ -17,7 +17,23 @@ const Protected = ({ children, authentication = true }) => {
     setLoading(false);
   }, [authStatus, authentication, navigate]);
 
-  return loading ? <Comment /> : <>{children}</>;
+  return loading ? (
+    <div className="w-full  py-8">
+      <Container>
+        <div className="flex flex-wrap items-center justify-center flex-col mt-[20%]">
+          <Audio
+            className="mx-auto"
+            ariaLabel="loader"
+            color="blue"
+            width={200}
+          />
+          <span className="text-xl text-slate-500 ">Loading...</span>
+        </div>
+      </Container>
+    </div>
+  ) : (
+    <>{children}</>
+  );
 };
 
 export default Protected;

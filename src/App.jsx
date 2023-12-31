@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import "./App.css";
+import "./index.css";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Audio } from "react-loader-spinner";
@@ -13,25 +13,31 @@ function App() {
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    authService
-      .gotCurrentUser()
-      .then((user) => {
-        if (user) {
-          dispatch(login({ user }));
-        } else dispatch(logout());
-      })
-      .finally(() => setLoading(false));
-  }, [dispatch]);
+  // useEffect(() => {
+  //   authService
+  //     .gotCurrentUser()
+  //     .then((user) => {
+  //       if (user) {
+  //         dispatch(login({ user }));
+  //       } else dispatch(logout());
+  //     })
+  //     .finally(() => setLoading(false));
+  // }, [dispatch]);
 
-  console.log(loading);
+  // console.log(loading);
 
   if (loading) {
     return (
-      <div className="w-full py-8">
+      <div className="w-full  py-8">
         <Container>
-          <div className="flex flex-wrap items-center justify-center ">
-            <Audio className="mx-auto" color="blue" width={500} />;
+          <div className="flex flex-wrap items-center justify-center flex-col mt-[20%]">
+            <Audio
+              className="mx-auto"
+              ariaLabel="loader"
+              color="blue"
+              width={200}
+            />
+            <span className="text-xl text-slate-500 ">Loading...</span>
           </div>
         </Container>
       </div>
@@ -41,14 +47,12 @@ function App() {
   return (
     <div className="min-h-screen flex flex-wrap content-between bg-gray-400 ">
       <div className="w-full block">
-        <Header />
+        {/* <Header /> */}
         <main>
           <Outlet />
         </main>
       </div>
-      <div className="w-full block">
-        <Footer />
-      </div>
+      <div className="w-full block">{/* <Footer /> */}</div>
     </div>
   );
 }
