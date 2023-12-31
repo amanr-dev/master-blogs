@@ -4,6 +4,7 @@ import PostCard from "../components/PostCard";
 import Container from "../components/container/Container";
 import { Link } from "react-router-dom";
 import Button from "../components/Button";
+import Header from "../components/header/Header";
 
 const Home = () => {
   const [posts, setPosts] = useState(null);
@@ -36,12 +37,14 @@ const Home = () => {
   return (
     <div className="w-full py-8">
       <Container>
+        {/* <Header /> */}
         <div className="flex flex-wrap">
-          {posts.map((post) => (
+          {/* {posts.map((post) => (
             <div className="py-2 flex-wrap">
               <PostCard {...post} key={post.id} />
             </div>
-          ))}
+          ))} */}
+          Hello to home
         </div>
       </Container>
     </div>

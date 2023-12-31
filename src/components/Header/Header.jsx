@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 const Header = () => {
   const navigate = useNavigate();
   const authStatus = useSelector((state) => state.auth.status);
+  console.log(`User logged = ${authStatus}`);
 
   const navItems = [
     {
@@ -39,7 +40,7 @@ const Header = () => {
 
   return (
     <Header className="py-3 shadow bg-gray-500">
-      <Container>
+      {/* <Container>
         <nav className="flex">
           <div className="mr-4">
             <Link to="/">
@@ -66,7 +67,7 @@ const Header = () => {
             )}
           </ul>
         </nav>
-      </Container>
+      </Container> */}
     </Header>
   );
 };

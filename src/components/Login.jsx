@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import authService from "../appwrite/auth";
 import { login as authLogin } from "../store/authSlices";
+import Logo from "./Logo";
+import Input from "./Input";
+import Button from "./Button";
 
 export const Login = () => {
   const naviagte = useNavigate();

@@ -4,13 +4,13 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Audio } from "react-loader-spinner";
 import authService from "./appwrite/auth";
-import Header from "./components/Header/Header";
+import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import { login, logout } from "./store/authSlices";
 import Container from "./components/container/Container";
 
 function App() {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
 
   // useEffect(() => {
@@ -46,13 +46,13 @@ function App() {
 
   return (
     <div className="min-h-screen flex flex-wrap content-between bg-gray-400 ">
+      <div className="w-full block">{/* <Header /> */}</div>
+      <main>
+        <Outlet />
+      </main>
       <div className="w-full block">
-        {/* <Header /> */}
-        <main>
-          <Outlet />
-        </main>
+        <Footer />
       </div>
-      <div className="w-full block">{/* <Footer /> */}</div>
     </div>
   );
 }
