@@ -13,18 +13,18 @@ function App() {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   authService
-  //     .gotCurrentUser()
-  //     .then((user) => {
-  //       if (user) {
-  //         dispatch(login({ user }));
-  //       } else dispatch(logout());
-  //     })
-  //     .finally(() => setLoading(false));
-  // }, [dispatch]);
+  useEffect(() => {
+    authService
+      .getCurrentUser()
+      .then((user) => {
+        if (user) {
+          dispatch(login({ user }));
+        } else dispatch(logout());
+      })
+      .finally(() => setLoading(false));
+  }, [dispatch]);
 
-  // console.log(loading);
+  console.log(loading);
 
   if (loading) {
     return (
