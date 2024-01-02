@@ -12,9 +12,10 @@ export const Login = () => {
   const naviagte = useNavigate();
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
-  const [error, setErrot] = useState("");
+  const [error, setError] = useState("");
 
   const login = async (data) => {
+    setError("");
     try {
       const session = await authService.login(data);
       if (session) {
@@ -25,7 +26,7 @@ export const Login = () => {
         }
       }
     } catch (error) {
-      setErrot(error.message);
+      setError(error.message);
     }
   };
   return (

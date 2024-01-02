@@ -21,7 +21,7 @@ const SignUp = () => {
       if (userData) {
         const userData = await authService.getCurrentUser();
         if (userData) {
-          dispatch(login(userData));
+          dispatch(login({ userData }));
           naviagte("/");
         }
       }
@@ -44,7 +44,7 @@ const SignUp = () => {
           Sign up to create an account
         </h2>
         <p className="mt-2 text-center text-base text-slate-700">
-          Alrady have an account? &nbsp;
+          Allready have an account? &nbsp;
           <Link
             to="/login"
             className="font-medium text-white transition-all duration-200 hover:underline "
