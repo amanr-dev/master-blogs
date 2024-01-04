@@ -8,13 +8,13 @@ import Button from "../components/Button";
 const Home = () => {
   const [posts, setPosts] = useState(null);
 
-  useEffect(() => {
-    service.getPosts([]).then((post) => {
-      if (post) {
-        setPosts(post.documents);
-      }
-    });
-  }, []);
+  // useEffect(() => {
+  //   service.getPosts([]).then((post) => {
+  //     if (post) {
+  //       setPosts(post.documents);
+  //     }
+  //   });
+  // }, []);
 
   if (!posts?.length) {
     return (
