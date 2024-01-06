@@ -1,5 +1,6 @@
 import conf from "../conf/conf";
 import { Client, Account, ID } from "appwrite";
+// export { ID } from "appwrite";
 
 // Reuseable class code
 export class AuthService {
@@ -13,7 +14,7 @@ export class AuthService {
     this.account = new Account(this.client);
   }
 
-  async createAccount({ email, password, name }) {
+  async createAccount(email, password, name) {
     try {
       const userAccount = await this.account.create(
         ID.unique(),
@@ -22,7 +23,7 @@ export class AuthService {
         name
       );
       if (userAccount) {
-        return this.login({ email, password });
+        return this.login(email, password);
       } else {
         return userAccount;
       }
@@ -31,7 +32,7 @@ export class AuthService {
     }
   }
 
-  async login({ email, password }) {
+  async login(email, password) {
     try {
       return await this.account.createEmailSession(email, password);
     } catch (error) {

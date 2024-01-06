@@ -15,9 +15,10 @@ export const Login = () => {
   const [error, setError] = useState("");
 
   const login = async (data) => {
+    const { email, password } = data;
     setError("");
     try {
-      const session = await authService.login(data);
+      const session = await authService.login(email, password);
       if (session) {
         const userData = await authService.getCurrentUser();
         if (userData) {
