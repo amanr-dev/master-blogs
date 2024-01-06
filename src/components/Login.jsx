@@ -29,6 +29,7 @@ export const Login = () => {
     } catch (error) {
       setError(error.message);
     }
+    // console.log(email, password);
   };
   return (
     <div className="flex items-center justify-center w-full">

@@ -15,20 +15,22 @@ const SignUp = () => {
   const { register, handleSubmit } = useForm();
 
   const create = async (data) => {
-    const { email, password, name } = data;
-    setError("");
-    try {
-      const userData = await authService.createAccount(email, password, name);
-      if (userData) {
-        const userData = await authService.getCurrentUser();
-        if (userData) {
-          dispatch(login({ userData }));
-          naviagte("/");
-        }
-      }
-    } catch (error) {
-      setError(error.message);
-    }
+    // const { email, password, name } = data;
+    // setError("");
+    // try {
+    //   const userData = await authService.createAccount(data);
+    //   if (userData) {
+    //     const userData = await authService.getCurrentUser();
+    //     if (userData) {
+    //       dispatch(login({ userData }));
+    //       naviagte("/");
+    //     }
+    //   }
+    // } catch (error) {
+    //   setError(error.message);
+    // }
+
+    console.log(data);
   };
 
   return (
